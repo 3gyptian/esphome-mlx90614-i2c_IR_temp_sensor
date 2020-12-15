@@ -4,9 +4,9 @@ These sensors are what's in an ear thermometer and provide quite quick reading o
 
 These aren't the cheapest sensors but they are quite fast and accurate and can be used in all sorts of situations where attaching a probe isn't practical.  In my case I have successfully used these sensors to monitor and control a water boiler and a pressure cooker. 
 
-![](https://github.com/3gyptian/esphome-mlx90614-i2c_IR_temp_sensor/blob/master/images/Pot_Temp_Distance_Sensor.png | width=480)
+![](https://github.com/3gyptian/esphome-mlx90614-i2c_IR_temp_sensor/blob/master/images/Pot_Temp_Distance_Sensor.png)
 
-![](https://github.com/3gyptian/esphome-mlx90614-i2c_IR_temp_sensor/blob/master/images/Pot_Temp_Sensor_Install.png | width=480)
+![](https://github.com/3gyptian/esphome-mlx90614-i2c_IR_temp_sensor/blob/master/images/Pot_Temp_Sensor_Install.png)
 
 
 IMPORTANT:  To get reliable IR readings I found I needed to paint the the pot black on the side that was facing the sensor.  My aluminum and stainless steel pots painted up quite well with hardware store matte black spray paint after a slight sand and a clean.  
