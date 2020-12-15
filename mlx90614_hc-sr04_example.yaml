@@ -1,0 +1,74 @@
+esphome:
+  name: mlx90614_example
+  platform: ESP8266
+  board: d1_mini
+  includes:
+  - custom/mlx90614.h
+  libraries:
+  - adafruit/Adafruit-MLX90614-Library
+
+wifi:
+  ssid: "<YOUR SID>"
+  password: "<YOUR_PASSWORD>"
+  fast_connect: true
+  
+  #manual_ip:
+  #  static_ip: 192.168.6.47
+  #  gateway: 192.168.6.1 
+  #  subnet: 255.255.255.0
+    
+  #use_address: 192.168.6.47
+  
+  # Enable fallback hotspot (captive portal) in case wifi connection fails mmk?
+  #ap:
+  #  ssid: "mlx90614_example Fallback AP"
+  #  password: "<YOUR_PASSWORD>"
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+# sda - GPIO4 - D2
+# scl - GPIO5 - D1
+i2c:
+  sda: 4
+  scl: 5
+  scan: True
+  id: bus_a
+  frequency: 50kHz  
+
+# NOTE: scan_interval defined by passing time to MLX90614 call below
+# ie: mlx90614(5000) == 5000ms == 5s == update_interval to Home Assistant
+sensor:
+  - platform: custom 
+    lambda: |-
+      auto mlx = new MLX90614(5000);   
+      App.register_component(mlx);
+      return {mlx->ambient_temperature_sensor, mlx->object_temperature_sensor};
+    sensors:
+    - name: "Example MLX90614 Ambient Temperature"
+      unit_of_measurement: °C
+      accuracy_decimals: 1
+    - name: "Example MLX90614 Object Temperature"
+      unit_of_measurement: °C
+      accuracy_decimals: 1
+      
+  - platform: ultrasonic
+    trigger_pin: D6
+    echo_pin: D7
+    name: "Example Distance Sensor"
+    update_interval: 5s
+      
+  - platform: wifi_signal
+    name: "Example MLX90614 WiFi Signal"
+    update_interval: 30s
+
+# to provide a ground pin that can connect to  one of the sensors' grounds if needed (only one ground pin on wemos d1 mini)
+#output:
+#  - platform: gpio
+#    pin: D5
+#    id: gpio_d5
