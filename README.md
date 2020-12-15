@@ -1,4 +1,4 @@
-# esphome MLX90614 I2C IR Temperature Custom Sensor 
+# esphome MLX90614 I2C IR Temperature Custom Sensor (GY-906)
 
 These sensors are what's in an ear thermometer and provide quite quick reading of an object's temperature from many centimetres away. They also include an ambient sensor which is providing the temperature reading of the sensor's case.  
 
