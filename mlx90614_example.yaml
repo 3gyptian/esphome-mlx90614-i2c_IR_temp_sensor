@@ -2,10 +2,14 @@ esphome:
   name: mlx90614_example
   platform: ESP8266
   board: d1_mini
-  includes:
-  - custom/mlx90614.h
   libraries:
-  - adafruit/Adafruit-MLX90614-Library
+  # Arduino libraries not included by default now .. must be specified
+  - Wire
+  - SPI
+  # Github libraries
+  - https://github.com/adafruit/Adafruit_BusIO.git
+  - https://github.com/adafruit/Adafruit-MLX90614-Library.git
+
 
 wifi:
   ssid: "<YOUR SID>"
